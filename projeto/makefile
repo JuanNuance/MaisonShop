@@ -1,9 +1,11 @@
 # Makefile para o projeto API Projeto II
 
 # Variáveis
-PYTHON = python3
-PIP = pip
-UVICORN = uvicorn
+VENV = ../.venv
+PYTHON = $(VENV)/bin/python
+PIP = $(PYTHON) -m pip
+UVICORN = $(PYTHON) -m uvicorn
+PYTEST = $(PYTHON) -m pytest
 # O módulo da aplicação aponta para o objeto 'app' dentro de projeto/app/main.py
 APP_MODULE = projeto.app.main:app
 PORT = 8000
@@ -28,7 +30,7 @@ run:
 # Rodar os testes
 test:
 	@echo "Executando testes..."
-	PYTHONPATH=$(PYTHONPATH) pytest
+	PYTHONPATH=$(PYTHONPATH) $(PYTEST)
 
 # Build (Instalação de dependências)
 build:
